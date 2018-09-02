@@ -10,7 +10,7 @@ RecordId = ''#Store RecordID
 with open('init', 'r') as f:
     info = json.loads(f.read())
 
-client = AcsClient(info['AccessKeyID'], info['AccessKeySecret'],'cn-hangzhou')
+client = AcsClient(info['AcessKeyID'], info['AccessKeySecret'],'cn-hangzhou')
 
 request = CommonRequest()
 request.set_accept_format('json')
