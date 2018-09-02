@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 #coding=utf-8
 import json
+import os
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.request import CommonRequest
 
 info = ''
 RecordId = ''#Store RecordID
 
-with open('init', 'r') as f:
+init_path = os.path.dirname(os.path.realpath(__file__)) + "/init"
+with open(init_path, 'r') as f:
     info = json.loads(f.read())
 
 client = AcsClient(info['AcessKeyID'], info['AccessKeySecret'],'cn-hangzhou')
