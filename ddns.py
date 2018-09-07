@@ -38,10 +38,8 @@ update_request.set_method('POST')
 update_request.set_version('2015-01-09')
 update_request.set_action_name('UpdateDomainRecord')
 
-from json import load
-from urllib2 import urlopen
-
-my_ip = load(urlopen('http://jsonip.com'))['ip']
+import getip
+my_ip = getip.get()
 
 update_request.add_query_param('RecordId', RecordId)
 update_request.add_query_param('RR', info['RR'])
@@ -51,6 +49,6 @@ update_request.add_query_param('Value', my_ip)
 update_dns = json.loads(client.do_action(update_request))
 
 if(update_dns['Code'] == 'DomainRecordDuplicate'):
-    print 'Domain Record is already exist!'
+    print 'Escape Already exist record'
 else:
-    print 'Domain Record update sucessefuly!'
+    print 'DomainRecord Update Successfully!'
